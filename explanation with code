@@ -1,0 +1,28 @@
+/*
+Extract the coordinates of the first two points (x0, y0) and (x1, y1) from the input.
+Iterate through the remaining points from the third point onwards.
+For each point (x, y) in the iteration:
+Calculate the slope between (x0, y0) and (x1, y1) as (x1 - x0) / (y1 - y0).
+Calculate the slope between (x0, y0) and the current point (x, y) as (x - x0) / (y - y0).
+If the two slopes are not equal, return False, indicating that the points do not form a straight line.
+If all the slopes are equal, return True, indicating that the points form a straight line.
+By checking the equality of the slopes, we can determine whether all the points lie on a straight line or not.
+*/
+
+
+class Solution {
+    public boolean checkStraightLine(int[][] coordinates) {
+        int x0=coordinates[0][0];
+        int y0=coordinates[0][1];
+        int x1=coordinates[1][0];
+        int y1=coordinates[1][1];
+        int x,y;
+        for(int i=2;i<coordinates.length;i++){
+            x=coordinates[i][0];
+            y=coordinates[i][1];
+            if((y1-y0)*(x-x0)!=(y-y0)*(x1-x0))
+                return false;
+        }
+        return true;
+    }
+}
